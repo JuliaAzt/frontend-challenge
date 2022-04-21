@@ -1,0 +1,31 @@
+.navbar {
+    background-color: var(--background-secondary);
+    font-family: "Starjedi";
+    padding: 0.5rem 2rem;
+    &__link {
+        text-align: center;
+        border-radius: 999px;
+        height: 42px;
+        vertical-align: middle;
+        padding: 0.5rem;
+        font-size: 1rem;
+        &.active {
+            cursor: pointer;
+            background-color: var(--background-card);
+        }
+        a {
+            cursor: pointer;
+            width: 100%;
+            color: var(--heading-text);
+        }
+    }
+    &__logo {
+        font-size: 2rem;
+        color: var(--heading-title);
+        line-height: 2rem;
+    }
+    &__description {
+        font-size: 1.5rem;
+        color: var(--heading-title);
+    }
+}
