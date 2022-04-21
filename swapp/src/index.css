@@ -12,5 +12,26 @@ code {
     monospace;
 }
 
+@font-face {
+  font-family: 'Starjedi';
+  src: local('Starjedi'), url(./assets/fonts/Starjedi.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), url(./assets/fonts/Roboto.ttf) format('opentype');
+}
+
+
+:root {
+  --background-primary: #000000;
+  --background-secondary: #0f0f0f;
+  --background-card: #303030;
+  --border-card:#606060;
+  --heading-title: #ffe81f;
+  --heading-text: #fafafa;
+}
+
+
 
 
