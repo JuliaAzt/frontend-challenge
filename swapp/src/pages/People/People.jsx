@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-grid-system';
 import CardPerson from '../../components/CardPerson';
 import Loading from '../../components/Loading';
 import PageHeader from '../../components/PageHeader';
+import Typography from '../../components/Typography';
 import { peopleAdapter } from '../../services/personAdapter';
 
 import './People.scss';
@@ -12,9 +13,14 @@ function People() {
   const [searchPerson, setSearchPerson] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleUserSearch = (data) => {
     setSearchPerson(data.target.value);
+  };
+
+  const handleLoadMore = () => {
+    if (people[people.length - 1].NEXT_PAGE !== null) setCurrentPage(currentPage + 1);
   };
 
   useEffect(() => {
@@ -31,11 +37,19 @@ function People() {
   useEffect(() => {
     const getPeople = async () => {
       setLoading(true);
-      setPeople(await peopleAdapter());
+      setPeople(await peopleAdapter(currentPage));
       setLoading(false);
     };
     getPeople();
   }, []);
+
+  useEffect(() => {
+    const getPeople = async () => {
+      const newPeople = await peopleAdapter(currentPage);
+      setPeople(people.concat(newPeople));
+    };
+    getPeople();
+  }, [currentPage]);
 
   return (
     <Container className="people">
@@ -58,6 +72,15 @@ function People() {
             );
           })
         )}
+      </Row>
+      <Row justify="center">
+        <Col md={3}>
+          <button className="people__button" onClick={handleLoadMore}>
+            <Typography variant="title" level="small">
+              Carregar mais
+            </Typography>
+          </button>
+        </Col>
       </Row>
     </Container>
   );

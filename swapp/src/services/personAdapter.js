@@ -1,17 +1,21 @@
 import { singleRequest, multipleRequests } from './swApi';
 
-const peopleAdapter = async () => {
-  const peopleRequest = await singleRequest(`https://swapi.dev/api/people`);
+const peopleAdapter = async (pageNumber) => {
+  const peopleRequest = await singleRequest(`https://swapi.dev/api/people/?page=${pageNumber}`);
+  console.log(peopleRequest);
   const peopleArray = peopleRequest.results;
+
   return peopleArray.map((person, index) => {
+    const height = Number(person.height) / 100.0;
     return {
       NOME: person.name,
       DATA: person.birth_year,
-      ALTURA: person.height,
+      ALTURA: `${height} METRO`,
       ESPECIE: person.species[0] || '',
       VEICULOS: person.vehicles,
       PLANETA: person.homeworld,
-      PERSON_ID: index + 1
+      PERSON_ID: index + 1,
+      NEXT_PAGE: peopleRequest.next
     };
   });
 };
@@ -26,8 +30,8 @@ const personAdapterCard = async (person) => {
   });
 
   return {
-    ESPECIE: specie.name || '',
-    VEICULOS: vehiclesNames || '',
+    ESPECIE: specie.name || 'N/A',
+    VEICULOS: vehiclesNames || 'N/A',
     PLANETA: planet.name
   };
 };

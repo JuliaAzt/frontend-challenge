@@ -1,0 +1,14 @@
+.people {
+    &__button {
+        cursor: pointer;
+        width: 100%;
+        border: 2px solid var(--heading-title);
+        background: transparent;
+        padding: 8px;
+        margin-top: 24px;
+        transition: border-color 0.5s;
+        &:hover {
+            border-color: var(--background-hover);
+        }
+    }
+}
