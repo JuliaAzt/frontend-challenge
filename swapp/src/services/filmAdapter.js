@@ -32,7 +32,7 @@ const filmAdapterPage = async (filmId) => {
   };
 
   const charactersInfo = characters.map((el) => {
-    return { NOME: el.name, URL: el.url };
+    return { NOME: el.name, ID: el.url.split('/')[5] };
   });
 
   return {

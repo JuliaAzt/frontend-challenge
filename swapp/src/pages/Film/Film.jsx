@@ -103,12 +103,12 @@ function Film() {
                       personagens
                     </Typography>
                     <ul className="film__list">
-                      {film?.PERSONAGENS?.map((personagem, index) => {
+                      {film?.PERSONAGENS?.map((character, index) => {
                         return (
                           <li key={index}>
-                            <a href={personagem?.URL}>
+                            <a href={`/people/${character?.ID}`}>
                               <Typography variant="text" level="medium">
-                                {personagem?.NOME}
+                                {character?.NOME}
                               </Typography>
                             </a>
                           </li>
