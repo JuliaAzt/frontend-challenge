@@ -1,0 +1,22 @@
+.subscribe {
+    &__title {
+        margin-top: 70px;
+        margin-bottom: 40px;
+    }
+    &__button {
+        cursor: pointer;
+        width: 100%;
+        border: 2px solid var(--heading-title);
+        background: transparent;
+        padding: 8px;
+        margin-top: 24px;
+    }
+    &__section {
+        margin-top: 24px;
+        margin-bottom: 8px;
+    }
+
+    &__row {
+        margin-top: 30px;
+    }
+}
