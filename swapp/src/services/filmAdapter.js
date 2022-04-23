@@ -1,15 +1,18 @@
 import { singleRequest, multipleRequests } from './swApi';
 
-const filmAdapterCard = async (filmId) => {
-  const filmRequest = await singleRequest(`https://swapi.dev/api/films/${filmId}`);
-  const date = filmRequest.release_date.split('-').reverse().join('/');
-
-  return {
-    NOME: filmRequest.title,
-    EPISODIO: filmRequest.episode_id,
-    LANCADO: date,
-    DIRIGIDO: filmRequest.director
-  };
+const filmsAdapter = async () => {
+  const filmsRequest = await singleRequest(`https://swapi.dev/api/films`);
+  const filmsArray = filmsRequest.results;
+  return filmsArray.map((film, index) => {
+    const date = film.release_date.split('-').reverse().join('/');
+    return {
+      NOME: film.title,
+      EPISODIO: film.episode_id,
+      LANCADO: date,
+      DIRIGIDO: film.director,
+      FILM_ID: index + 1
+    };
+  });
 };
 
 const filmAdapterPage = async (filmId) => {
@@ -23,6 +26,7 @@ const filmAdapterPage = async (filmId) => {
   const formatDate = (date) => {
     return new Date(date).toLocaleDateString();
   };
+
   const getArrayNames = (array) => {
     return array.map((el) => el.name);
   };
@@ -48,4 +52,4 @@ const filmAdapterPage = async (filmId) => {
   };
 };
 
-export { filmAdapterCard, filmAdapterPage };
+export { filmsAdapter, filmAdapterPage };
