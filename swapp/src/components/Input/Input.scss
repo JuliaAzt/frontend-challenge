@@ -1,0 +1,64 @@
+.input {
+    background-color: var(--background-input);
+    border: 1px solid var(--background-card);
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+
+    input {
+        background-color: transparent;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        padding: 0px 5px;
+        color: var(--heading-text);
+        padding: 10px 5px;
+        &::placeholder {
+            color: var(--heading-text);
+            text-transform: uppercase;
+        }
+        &:focus-visible {
+            border: 0px;
+            outline: none;
+            box-shadow: none;
+        }
+    }
+    svg {
+        fill: var(--heading-text);
+        padding: 0px 5px;
+    }
+
+    &__label {
+        font-size: 14px;
+        color: var(--heading-text);
+        line-height: 22px;
+    }
+    &__textarea {
+        padding: 10px;
+        background: transparent;
+        width: 100%;
+        height: 100px;
+        color: var(--heading-text);
+        border: none;
+        &::placeholder {
+            color: var(--heading-text);
+            text-transform: uppercase;
+        }
+    }
+
+    &__file {
+        color: var(--heading-text);
+        input::file-selector-button {
+            border: 2px solid var(--heading-title);
+            color: var(--heading-text);
+            padding: 0.2em 0.4em;
+            border-radius: 0.2em;
+            background-color: transparent;
+            font-family: "Starjedi";
+            transition: 1s;
+        }
+    }
+}
