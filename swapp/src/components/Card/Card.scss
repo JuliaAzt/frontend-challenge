@@ -1,5 +1,12 @@
 .card {
     background-color: var(--background-card);
     border: 2px solid var(--border-card);
-    padding: 1.5rem 0.5rem;
+    padding: 1.5rem 1rem;
+    &__title {
+        margin-bottom: 0px;
+        height: 45px;
+    }
+    &__header {
+        margin-bottom: 14px;
+    }
 }
