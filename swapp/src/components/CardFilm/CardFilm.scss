@@ -1,0 +1,19 @@
+.card {
+    &__section {
+        margin-bottom: 24px;
+    }
+
+    &__person {
+        margin-top: 25px;
+    }
+    &__vehicles {
+        height: 60px;
+    }
+    &__film {
+        margin-top: 25px;
+    }
+    &__information {
+        margin-top: 24px;
+        height: 100px;
+    }
+}
