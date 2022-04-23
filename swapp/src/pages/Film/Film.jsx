@@ -55,124 +55,136 @@ function Film() {
           </Card>
 
           <Card title="Ficha Técnica" className="film__margin">
-            <Row>
-              <Col md={6}>
-                <Typography variant="subtitle" level="medium">
-                  Diretor
-                </Typography>
-                <Typography variant="text" level="medium">
-                  {film?.DIRIGIDO}
-                </Typography>
-              </Col>
-              <Col md={6}>
-                <Typography variant="subtitle" level="medium">
-                  Produtores
-                </Typography>
-                <Typography variant="text" level="medium">
-                  {film?.PRODUZIDO}
-                </Typography>
-              </Col>
-            </Row>
-            <Row className="film__margin">
-              <Col md={6}>
-                <Typography variant="subtitle" level="medium">
-                  Lançamento
-                </Typography>
-                <Typography variant="text" level="medium">
-                  {film?.LANCADO}
-                </Typography>
-              </Col>
-            </Row>
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <>
+                <Row>
+                  <Col md={6}>
+                    <Typography variant="subtitle" level="medium">
+                      Diretor
+                    </Typography>
+                    <Typography variant="text" level="medium">
+                      {film?.DIRIGIDO}
+                    </Typography>
+                  </Col>
+                  <Col md={6}>
+                    <Typography variant="subtitle" level="medium">
+                      Produtores
+                    </Typography>
+                    <Typography variant="text" level="medium">
+                      {film?.PRODUZIDO}
+                    </Typography>
+                  </Col>
+                </Row>
+                <Row className="film__margin">
+                  <Col md={6}>
+                    <Typography variant="subtitle" level="medium">
+                      Lançamento
+                    </Typography>
+                    <Typography variant="text" level="medium">
+                      {film?.LANCADO}
+                    </Typography>
+                  </Col>
+                </Row>
+              </>
+            )}
           </Card>
         </Col>
         <Col md={8}>
           <Card title="Aparecem nesse filme">
-            <Row>
-              <Col md={6}>
-                <Typography variant="subtitle" level="medium">
-                  personagens
-                </Typography>
-                <ul className="film__list">
-                  {film?.PERSONAGENS?.map((personagem, index) => {
-                    return (
-                      <li key={index}>
-                        <a href={personagem?.URL}>
-                          <Typography variant="text" level="medium">
-                            {personagem?.NOME}
-                          </Typography>
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </Col>
-              <Col md={6}>
-                <Typography variant="subtitle" level="medium">
-                  Espécies
-                </Typography>
-                <ul className="film__list">
-                  {film?.ESPECIES?.map((specie, index) => {
-                    return (
-                      <li key={index}>
-                        <Typography variant="text" level="medium">
-                          {specie}
-                        </Typography>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </Col>
-            </Row>
-            <Row className="film__margin">
-              <Col md={4}>
-                <Typography variant="subtitle" level="medium">
-                  veiculos
-                </Typography>
-                <ul>
-                  {film?.VEICULOS?.map((veiculo, index) => {
-                    return (
-                      <li key={index}>
-                        <Typography variant="text" level="medium">
-                          {veiculo}
-                        </Typography>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </Col>
-              <Col md={4}>
-                <Typography variant="subtitle" level="medium">
-                  naves
-                </Typography>
-                <ul>
-                  {film?.NAVES?.map((nave, index) => {
-                    return (
-                      <li key={index}>
-                        <Typography variant="text" level="medium">
-                          {nave}
-                        </Typography>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </Col>
-              <Col md={4}>
-                <Typography variant="subtitle" level="medium">
-                  planetas
-                </Typography>
-                <ul>
-                  {film?.PLANETAS?.map((planeta, index) => {
-                    return (
-                      <li key={index}>
-                        <Typography variant="text" level="medium">
-                          {planeta}
-                        </Typography>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </Col>
-            </Row>
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <>
+                <Row>
+                  <Col md={6}>
+                    <Typography variant="subtitle" level="medium">
+                      personagens
+                    </Typography>
+                    <ul className="film__list">
+                      {film?.PERSONAGENS?.map((personagem, index) => {
+                        return (
+                          <li key={index}>
+                            <a href={personagem?.URL}>
+                              <Typography variant="text" level="medium">
+                                {personagem?.NOME}
+                              </Typography>
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </Col>
+                  <Col md={6}>
+                    <Typography variant="subtitle" level="medium">
+                      Espécies
+                    </Typography>
+                    <ul className="film__list">
+                      {film?.ESPECIES?.map((specie, index) => {
+                        return (
+                          <li key={index}>
+                            <Typography variant="text" level="medium">
+                              {specie}
+                            </Typography>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </Col>
+                </Row>
+                <Row className="film__margin">
+                  <Col md={4}>
+                    <Typography variant="subtitle" level="medium">
+                      veiculos
+                    </Typography>
+                    <ul>
+                      {film?.VEICULOS?.map((veiculo, index) => {
+                        return (
+                          <li key={index}>
+                            <Typography variant="text" level="medium">
+                              {veiculo}
+                            </Typography>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </Col>
+                  <Col md={4}>
+                    <Typography variant="subtitle" level="medium">
+                      naves
+                    </Typography>
+                    <ul>
+                      {film?.NAVES?.map((nave, index) => {
+                        return (
+                          <li key={index}>
+                            <Typography variant="text" level="medium">
+                              {nave}
+                            </Typography>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </Col>
+                  <Col md={4}>
+                    <Typography variant="subtitle" level="medium">
+                      planetas
+                    </Typography>
+                    <ul>
+                      {film?.PLANETAS?.map((planeta, index) => {
+                        return (
+                          <li key={index}>
+                            <Typography variant="text" level="medium">
+                              {planeta}
+                            </Typography>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </Col>
+                </Row>
+              </>
+            )}
           </Card>
         </Col>
       </Row>
