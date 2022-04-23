@@ -4,6 +4,15 @@
     }
 
     &__card {
+        box-sizing: border-box;
         margin-top: 24px;
+    }
+
+    &__movies {
+        a:visited,
+        a:active,
+        a:link {
+            color: var(--heading-text);
+        }
     }
 }

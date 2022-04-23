@@ -9,4 +9,8 @@
     display: block;
     text-align: center;
     text-decoration: none;
+    transition: border-color 0.5s;
+    &:hover {
+        border-color: var(--background-hover);
+    }
 }
