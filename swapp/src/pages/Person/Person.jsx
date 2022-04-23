@@ -132,10 +132,15 @@ function Person() {
                     </Typography>
                   </Col>
                 </Row>
-                <Typography variant="subtitle" level="medium">
-                  Aparece em
-                </Typography>
-                <ul>
+
+                <Row className="person__margin">
+                  <Col md={12}>
+                    <Typography variant="subtitle" level="medium">
+                      Aparece em
+                    </Typography>
+                  </Col>
+                </Row>
+                <ul className="person__movies">
                   {person?.FILMES?.map((episode, index) => {
                     return (
                       <li key={index}>
