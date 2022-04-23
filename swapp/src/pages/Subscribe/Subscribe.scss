@@ -10,6 +10,10 @@
         background: transparent;
         padding: 8px;
         margin-top: 24px;
+        transition: border-color 0.5s;
+        &:hover {
+            border-color: var(--background-hover);
+        }
     }
     &__section {
         margin-top: 24px;

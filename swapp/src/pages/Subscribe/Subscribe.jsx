@@ -7,9 +7,28 @@ import './Subscribe.scss';
 
 function Subscribe() {
   const [name, setName] = useState('');
+  const [birthday, setBirthday] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [favoriteCharacter, setFavoriteCharacter] = useState('');
+  const [resume, setResume] = useState('');
+  const [career, setCareer] = useState('');
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    console.log({
+      name,
+      birthday,
+      email,
+      phone,
+      password,
+      confirmPassword,
+      favoriteCharacter,
+      resume,
+      career
+    });
   };
 
   return (
@@ -47,27 +66,59 @@ function Subscribe() {
                     placeholder="Digite sua data de nascimento"
                     type="date"
                     label="DATA DE NASCIMENTO"
+                    value={birthday}
+                    onChange={(e) => {
+                      setBirthday(e.target.value);
+                    }}
                   />
                 </Col>
               </Row>
               <Row className="subscribe__row">
                 <Col md={6}>
-                  <Input placeholder="Digite seu e-mail" type="email" label="E-MAIL" />
+                  <Input
+                    placeholder="Digite seu e-mail"
+                    type="email"
+                    label="E-MAIL"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
                 </Col>
                 <Col md={6}>
-                  <Input placeholder="Digite seu telefone" type="text" label="TELEFONE" />
+                  <Input
+                    placeholder="Digite seu telefone"
+                    type="text"
+                    label="TELEFONE"
+                    value={phone}
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                    }}
+                  />
                 </Col>
               </Row>
 
               <Row className="subscribe__row">
                 <Col md={6}>
-                  <Input placeholder="Digite sua senha" type="password" label="CRIE SUA SENHA" />
+                  <Input
+                    placeholder="Digite sua senha"
+                    type="password"
+                    label="CRIE SUA SENHA"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                  />
                 </Col>
                 <Col md={6}>
                   <Input
                     placeholder="Repita sua senha"
                     type="password"
                     label="CONFIRME SUA SENHA"
+                    value={confirmPassword}
+                    onChange={(e) => {
+                      setConfirmPassword(e.target.value);
+                    }}
                   />
                 </Col>
               </Row>
@@ -80,21 +131,39 @@ function Subscribe() {
               </Row>
               <Row className="subscribe__row">
                 <Col md={6}>
-                  <Input label="QUAL SEU PERSONAGEM FAVORITO?" type="text" />
+                  <Input
+                    label="QUAL SEU PERSONAGEM FAVORITO?"
+                    type="text"
+                    value={favoriteCharacter}
+                    onChange={(e) => {
+                      setFavoriteCharacter(e.target.value);
+                    }}
+                  />
                 </Col>
               </Row>
               <Row className="subscribe__row">
                 <Col md={8}>
-                  <Input label="ANEXE O SEU CURRÍCULO" variant="file" />
+                  <Input
+                    label="ANEXE O SEU CURRÍCULO"
+                    variant="file"
+                    value={resume}
+                    onChange={(e) => {
+                      setResume(e.target.value);
+                    }}
+                  />
                 </Col>
               </Row>
 
               <Row className="subscribe__row">
                 <Col md={12}>
                   <Input
-                    placeholder="Digite seu nome"
+                    placeholder="Escreva aqui o resumo"
                     variant="textarea"
                     label="UM RESUMO DA SUA CARREIRA ARTISTICA"
+                    value={career}
+                    onChange={(e) => {
+                      setCareer(e.target.value);
+                    }}
                   />
                 </Col>
               </Row>
