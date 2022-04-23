@@ -1,24 +1,34 @@
 import { singleRequest, multipleRequests } from './swApi';
 
-const personAdapterCard = async (personId) => {
-  const personRequest = await singleRequest(`https://swapi.dev/api/people/${personId}`);
-  const vehicles = await multipleRequests(personRequest.vehicles);
-  const specie = await singleRequest(personRequest.species[0]);
+const peopleAdapter = async () => {
+  const peopleRequest = await singleRequest(`https://swapi.dev/api/people`);
+  const peopleArray = peopleRequest.results;
+  return peopleArray.map((person, index) => {
+    return {
+      NOME: person.name,
+      DATA: person.birth_year,
+      ALTURA: person.height,
+      ESPECIE: person.species[0] || '',
+      VEICULOS: person.vehicles,
+      PLANETA: person.homeworld,
+      PERSON_ID: index + 1
+    };
+  });
+};
+
+const personAdapterCard = async (person) => {
+  const vehicles = await multipleRequests(person.vehicles);
+  const planet = (await singleRequest(person.planet)) || '';
+  const specie = (await singleRequest(person.specie)) || '';
 
   const vehiclesNames = vehicles.map((el) => {
     return el.name;
   });
 
   return {
-    NASCIMENTO: {
-      NOME: personRequest.name,
-      DATA: personRequest.birth_year
-    },
-    DESCRICAO: {
-      ESPECIE: specie.name || '',
-      ALTURA: personRequest.height
-    },
-    VEICULOS: vehiclesNames || ''
+    ESPECIE: specie.name || '',
+    VEICULOS: vehiclesNames || '',
+    PLANETA: planet.name
   };
 };
 
@@ -33,6 +43,9 @@ const personAdapterPage = async (personId) => {
   const getArrayNames = (array) => {
     return array.map((el) => el.name);
   };
+  const formatDate = (date) => {
+    return new Date(date).toLocaleDateString();
+  };
 
   const filmsInfo = films.map((el) => {
     return { NOME: el.title, URL: el.url };
@@ -41,15 +54,15 @@ const personAdapterPage = async (personId) => {
   return {
     NOME: personRequest.name,
     FILMES: filmsInfo,
-    DESCRICAO: {
-      ESPECIE: specie.name || '',
-      ALTURA: `${height} METRO`,
-      PESO: `${personRequest.mass} KG`,
-      CABELO: personRequest.hair_color
-    },
+    CRIADO: formatDate(personRequest.created),
+    ATUALIZADO: formatDate(personRequest.edited),
+    ESPECIE: specie?.name || '',
+    ALTURA: `${height} METRO`,
+    PESO: `${personRequest.mass} KG`,
+    CABELO: personRequest.hair_color,
     VEICULOS: getArrayNames(vehicles) || '',
     NAVES: getArrayNames(starships) || ''
   };
 };
 
-export { personAdapterCard, personAdapterPage };
+export { peopleAdapter, personAdapterCard, personAdapterPage };
