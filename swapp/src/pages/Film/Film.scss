@@ -1,0 +1,27 @@
+.film {
+    &__sinopse {
+        text-transform: none;
+        text-align: justify;
+        text-justify: inter-word;
+        text-indent: 50px;
+    }
+
+    &__list {
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        a:visited,
+        a:active,
+        a:link {
+            color: var(--heading-text);
+        }
+    }
+
+    &__margin {
+        margin-top: 24px;
+    }
+
+    &__header {
+        margin: 40px auto;
+    }
+}
