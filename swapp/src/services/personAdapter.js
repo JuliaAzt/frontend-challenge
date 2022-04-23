@@ -50,9 +50,10 @@ const personAdapterPage = async (personId) => {
   const formatDate = (date) => {
     return new Date(date).toLocaleDateString();
   };
+  console.log(films);
 
   const filmsInfo = films.map((el) => {
-    return { NOME: el.title, URL: el.url };
+    return { NOME: el.title, ID: el.url.split('/')[5] };
   });
 
   return {

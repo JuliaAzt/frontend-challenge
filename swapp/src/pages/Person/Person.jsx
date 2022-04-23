@@ -139,7 +139,7 @@ function Person() {
                   {person?.FILMES?.map((episode, index) => {
                     return (
                       <li key={index}>
-                        <a href={episode?.URL}>
+                        <a href={`/films/${episode?.ID}`}>
                           <Typography variant="text" level="medium">
                             {episode?.NOME}
                           </Typography>
